@@ -26,17 +26,18 @@
 
     <!-- LASERGAME COUNTDOWN -->
     <style>
-        #lasergameCountdown{
+        .big-light{
             font-size:60px;
             font-weight:300;
+            line-height:100px;
         }
     </style>
-    <article class="flex flex-column" data-time="1">
+    <article class="flex flex-column" data-time="40000">
         <header class="mdl-color-text--grey-100 mdl-color--primary">
             <h1>Lasergame evenement</h1>
         </header>
         <div class="flex flex-grow flex-center">
-            <p id="lasergameCountdown"></p>
+            <p id="lasergameCountdown" class="big-light"></p>
         </div>
     </article>
     <script type="text/javascript">
@@ -46,6 +47,19 @@
             );
         });
     </script>
+
+    <article class="flex flex-column" data-time="30000">
+        <header class="mdl-color-text--grey-100 mdl-color--primary">
+            <h1>Social media</h1>
+        </header>
+        <div class="flex flex-grow flex-center flex-column">
+            <div>
+                <p class="big-light">Twitter: @OliveoHandbal</p>
+                <p class="big-light">Facebook: facebook.com/OliveoHandbal</p>
+                <p class="big-light">Website: oliveohandbal.nl</p>
+            </div>
+        </div>
+    </article>
 </main>
 <footer>
     <div class="mdl-progress">
