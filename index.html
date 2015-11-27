@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oliveo Handbal Kiosk</title>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300,700,500" type="text/css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+
+    <!--[if IE]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.7/es5-shim.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <![endif]-->
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/hilios/jQuery.countdown/master/dist/jquery.countdown.min.js"></script>
+</head>
+<body>
+
+
+<main>
+
+    <!-- LASERGAME COUNTDOWN -->
+    <style>
+        #lasergameCountdown{
+            font-size:60px;
+            font-weight:300;
+        }
+    </style>
+    <article class="flex flex-column" data-time="1">
+        <header class="mdl-color-text--grey-100 mdl-color--primary">
+            <h1>Lasergame evenement</h1>
+        </header>
+        <div class="flex flex-grow flex-center">
+            <p id="lasergameCountdown"></p>
+        </div>
+    </article>
+    <script type="text/javascript">
+        $("#lasergameCountdown").countdown("2016/02/06 16:30", function(event) {
+            $(this).text(
+                event.strftime('Nog %-D dag%!D:en;, %-H uur, %-M minuten en %-S seconden')
+            );
+        });
+    </script>
+</main>
+<footer>
+    <div class="mdl-progress">
+        <div class="progressbar bar notransition"></div>
+        <div class="bufferbar bar" style="width: 100%;"></div>
+    </div>
+    <section id="time" class="floatRight"></section>
+    <table id="wedstrijden">
+        <tr class="middle"></tr>
+        <tr class="large"></tr>
+        <tr class="middle"></tr>
+    </table>
+
+</footer>
+
+<script src="wedstrijden.js"></script>
+<script src="slides.js"></script>
+<script src="reload.js"></script>
+<script>
+    setInterval(function(){
+        var date = new Date();
+
+        writeWedstrijden(date);
+
+        $("#time").text(('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
+    }, 1000);
+</script>
+
+</body>
+</html>
