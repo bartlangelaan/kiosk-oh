@@ -79,13 +79,26 @@
 <script src="slides.js"></script>
 <script src="reload.js"></script>
 <script>
-    setInterval(function(){
-        var date = new Date();
+    $(function(){
+        function refresh(){
+            OH.games.refresh();
+        }
 
-        writeWedstrijden(date);
+        function update(){
+            var date = new Date();
 
-        $("#time").text(('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
-    }, 1000);
+            writeWedstrijden(date);
+
+            $("#time").text(('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
+        }
+
+        setInterval(refresh, 20*60*1000);
+        setInterval(update, 1000);
+
+        refresh();
+        update();
+
+    });
 </script>
 
 </body>
