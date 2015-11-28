@@ -67,7 +67,7 @@
         <div class="bufferbar bar" style="width: 100%;"></div>
     </div>
     <section id="time" class="floatRight"></section>
-    <table id="wedstrijden">
+    <table id="schedule">
         <tr class="middle"></tr>
         <tr class="large"></tr>
         <tr class="middle"></tr>
@@ -87,34 +87,22 @@
         function update(){
             var date = new Date();
 
-            var $wedstrijdenTr = $("#wedstrijden").find("tr");
+            var $schedule = $("#schedule").find("tr");
+            $schedule.html("");
 
-            $wedstrijdenTr.html("");
-
-
-
-            if(!OH.games.home.length)
-                $wedstrijdenTr.eq(1).html("<td>Vandaag geen thuiswedstrijden.</td>");
-
-            var actieveWedstrijd = 0;
-
-            for(i = 0; i < OH.games.home.length; i++){
-                var timeSplit = OH.games.home[i].time.split(":");
-                var hour = parseInt(timeSplit[0]);
-                var minute = parseInt(timeSplit[1]);
-
-                if(hour < date.getHours() || (hour == date.getHours() && minute <= date.getMinutes()))
-                    actieveWedstrijd = i;
+            if(!OH.games.home.length) {
+                $schedule.eq(1).html("<td>Vandaag geen thuiswedstrijden.</td>");
             }
+            else{
+                var activeGame = OH.games.getActive(date);
 
-            for(var i = -1; i < 2; i++) {
-                if (OH.games.home[actieveWedstrijd + i] && OH.games.home[actieveWedstrijd].date == OH.games.home[actieveWedstrijd + i].date)
-                    $wedstrijdenTr.eq(i+1)
-                            .append($("<td>").text(OH.games.home[actieveWedstrijd + i].time))
-                            .append($("<td>").text(OH.games.home[actieveWedstrijd + i].team + " - " + OH.games.home[actieveWedstrijd + i].opponent));
+                for(var i = -1; i < 2; i++) {
+                    if (OH.games.home[activeGame + i] && OH.games.home[activeGame].date == OH.games.home[activeGame + i].date)
+                        $schedule.eq(i+1)
+                                .append($("<td>").text(OH.games.home[activeGame + i].time))
+                                .append($("<td>").text(OH.games.home[activeGame + i].team + " - " + OH.games.home[activeGame + i].opponent));
+                }
             }
-
-
 
             $("#time").text(('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
         }

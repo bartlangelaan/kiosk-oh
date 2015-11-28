@@ -25,5 +25,18 @@ OH.games = {
                     && wedstrijd.date.split(" ")[1] == monthNames[date.getMonth()];
             });
         })
+    },
+    getActive: function(date){
+        var actieveWedstrijd = 0;
+
+        for(i = 0; i < OH.games.home.length; i++){
+            var timeSplit = OH.games.home[i].time.split(":");
+            var hour = parseInt(timeSplit[0]);
+            var minute = parseInt(timeSplit[1]);
+
+            if(hour < date.getHours() || (hour == date.getHours() && minute <= date.getMinutes()))
+                actieveWedstrijd = i;
+        }
+        return actieveWedstrijd;
     }
 };
