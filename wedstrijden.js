@@ -27,36 +27,3 @@ OH.games = {
         })
     }
 };
-
-
-
-var $wedstrijdenTr = $("#wedstrijden").find("tr");
-
-function writeWedstrijden(date){
-    $wedstrijdenTr.html("");
-
-
-
-    if(!OH.games.home.length)
-        $wedstrijdenTr.eq(1).html("<td>Vandaag geen thuiswedstrijden.</td>");
-
-    var actieveWedstrijd = 0;
-
-    for(i = 0; i < OH.games.home.length; i++){
-        var timeSplit = OH.games.home[i].time.split(":");
-        var hour = parseInt(timeSplit[0]);
-        var minute = parseInt(timeSplit[1]);
-        console.log(hour, date.getHours());
-
-        if(hour < date.getHours() || (hour == date.getHours() && minute <= date.getMinutes()))
-            actieveWedstrijd = i;
-    }
-
-    for(var i = -1; i < 2; i++) {
-        if (OH.games.home[actieveWedstrijd + i] && OH.games.home[actieveWedstrijd].date == OH.games.home[actieveWedstrijd + i].date)
-            $wedstrijdenTr.eq(i+1)
-                .append($("<td>").text(OH.games.home[actieveWedstrijd + i].time))
-                .append($("<td>").text(OH.games.home[actieveWedstrijd + i].team + " - " + OH.games.home[actieveWedstrijd + i].opponent));
-    }
-
-}
