@@ -18,6 +18,7 @@
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/hilios/jQuery.countdown/master/dist/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 </head>
 <body>
 
@@ -80,12 +81,13 @@
 <script src="reload.js"></script>
 <script>
     $(function(){
+        moment.locale('nl');
+
         function refresh(){
             OH.games.refresh();
         }
 
         function update(){
-            var date = new Date();
 
             var $schedule = $("#schedule").find("tr");
             $schedule.html("");
@@ -94,17 +96,17 @@
                 $schedule.eq(1).html("<td>Vandaag geen thuiswedstrijden.</td>");
             }
             else{
-                var activeGame = OH.games.getActive(date);
+                var activeGame = OH.games.getActive();
 
                 for(var i = -1; i < 2; i++) {
-                    if (OH.games.home[activeGame + i] && OH.games.home[activeGame].date == OH.games.home[activeGame + i].date)
+                    if (OH.games.home[activeGame + i])
                         $schedule.eq(i+1)
-                                .append($("<td>").text(OH.games.home[activeGame + i].time))
+                                .append($("<td>").text(OH.games.home[activeGame + i].time.format("HH:mm")))
                                 .append($("<td>").text(OH.games.home[activeGame + i].team + " - " + OH.games.home[activeGame + i].opponent));
                 }
             }
 
-            $("#time").text(('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
+            $("#time").text(moment().format("HH:mm"));
         }
 
         setInterval(refresh, 20*60*1000);
