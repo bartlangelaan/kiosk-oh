@@ -4,7 +4,7 @@ angular.module('Kiosk').service('Slideshow', function Slideshow($rootScope, $tim
     self.slide = -1;
 
     function setProgressBarTransitionTime(milliseconds){
-        self.progressBar.find(".md-bar2").css('transition-duration', milliseconds+'ms')
+        self.progressBar.find(".md-bar2").css('transition-duration', (milliseconds-100)+'ms')
     }
 
     function nextSlide(){
