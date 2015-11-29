@@ -1,0 +1,7 @@
+main{
+    overflow: hidden;
+}
+main > article{
+    flex: 0 0 100%;
+    margin:0;
+}
