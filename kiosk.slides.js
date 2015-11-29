@@ -11,12 +11,19 @@ angular.module('Kiosk').service('Slideshow', function Slideshow($rootScope, $tim
         // Get slides
         var slides = angular.element(self.slideSelector);
 
+        // If not loaded yet
+        if(!slides.length){
+            $timeout(nextSlide, 100);
+            return;
+        }
+
         // Next slide
         self.slide++;
         if(self.slide >= slides.length){
             self.slide = 0;
         }
         var slide = slides.eq(self.slide);
+        console.log("[SLIDES] Scrolling to slide nr", self.slide)
 
         // Scroll to right slide
         setProgressBarTransitionTime(1000);
@@ -24,7 +31,6 @@ angular.module('Kiosk').service('Slideshow', function Slideshow($rootScope, $tim
         angular.element("main").animate({scrollLeft: slide.width() * self.slide}, 1000, "linear", function(){
 
             var nextSlideDelay = slide.data('time') || self.defaultSlideTime;
-            console.log(nextSlideDelay);
 
             // Next slide in x seconds
             $timeout(nextSlide, nextSlideDelay);
@@ -35,6 +41,7 @@ angular.module('Kiosk').service('Slideshow', function Slideshow($rootScope, $tim
                 $rootScope.slideshowProgress = (self.slide+1) / slides.length * 100;
             });
 
+            console.log("[SLIDES] Next slide in",nextSlideDelay,"milliseconds");
         });
 
 

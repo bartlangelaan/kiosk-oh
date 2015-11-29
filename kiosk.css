@@ -5,3 +5,10 @@ main > article{
     flex: 0 0 100%;
     margin:0;
 }
+
+.kiosk-header{
+    font-size: 40px;
+    line-height: 100px;
+    height: 100px;
+    max-height: 100px;
+}
