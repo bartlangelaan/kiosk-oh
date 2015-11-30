@@ -88,7 +88,7 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
 
         $rootScope.canteen.active = [];
         for(var i = 0; i < $rootScope.canteen.length; i++){
-            if(moment().add(12, 'day').subtract(7, 'hour').isBetween($rootScope.canteen[i].startTime, $rootScope.canteen[i].endTime)){
+            if(moment().isBetween($rootScope.canteen[i].startTime, $rootScope.canteen[i].endTime)){
                 $rootScope.canteen.active.push(i);
             }
         }
