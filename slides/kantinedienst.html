@@ -1,0 +1,55 @@
+<md-toolbar>
+    <h1 class="md-toolbar-tools kiosk-header">Kantinedienst</h1>
+</md-toolbar>
+<md-content class="md-padding" flex layout="column" layout-align="center center">
+    <table class="canteen">
+        <tr ng-repeat="c in canteen.active">
+            <th class="align-top align-right"><span ng-show="$first">Nu: </span></th>
+            <th class="align-left">
+                <ul>
+                    <li ng-repeat="p in canteen[c].people">{{p}}</li>
+                </ul>
+            </th>
+            <th class="align-bottom align-left"><i>tot {{canteen[c].endTime.format("HH:mm")}}</i></th>
+        </tr>
+        <tr ng-if="canteen[canteen.active[canteen.active.length-1]+1] && canteen[canteen.active[canteen.active.length-1]+1].startTime.isSame(canteen[canteen.active[0]].startTime, 'day')">
+            <td class="align-top align-right">Vanaf {{canteen[canteen.active[canteen.active.length-1]+1].startTime.format("HH:mm")}}:</td>
+            <td class="align-left">
+                <ul>
+                    <li ng-repeat="p in canteen[canteen.active[canteen.active.length-1]+1].people">{{p}}</li>
+                </ul>
+            </td>
+            <td class="align-bottom align-left"><i>tot {{canteen[canteen.active[canteen.active.length-1]+1].endTime.format("HH:mm")}}</i></td>
+        </tr>
+    </table>
+</md-content>
+
+<style>
+    .canteen .align-left{
+        text-align: left;
+    }
+    .canteen .align-right{
+        text-align: right;
+    }
+    .canteen .align-top{
+        vertical-align: top;
+    }
+    .canteen .align-bottom{
+        vertical-align: bottom;
+    }
+    .canteen{
+        border-spacing: 100px 50px;
+        font-size:60px;
+    }
+    .canteen th{
+        font-weight:400;
+    }
+    .canteen tr{
+        font-weight: 300;
+    }
+    .canteen ul{
+        list-style: none;
+        padding:0;
+        margin: 0;
+    }
+</style>
