@@ -2,7 +2,7 @@
     <h1 class="md-toolbar-tools kiosk-header">Trainingen vandaag</h1>
 </md-toolbar>
 <md-content flex layout="column" layout-align="center center">
-    <table class="training">
+    <table class="training {{training.home.today.length > 10 ? 'split' : ''}}">
         <tr ng-repeat="train in training.home.today"
             class="{{training.home.now.indexOf(train) != -1 ? 'active' : ''}}">
             <td class="align-right">
@@ -17,7 +17,7 @@
 
 <style>
     table.training{
-        font-size: 40px;
+        font-size: 50px;
         border-spacing: 40px 0;
     }
     table.training tr{

@@ -72,3 +72,8 @@ footer .time{
 .games tr{
     font-weight: 300;
 }
+
+table.split{
+    display:block;
+    -webkit-column-count:2;
+}
