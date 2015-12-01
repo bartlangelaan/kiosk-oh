@@ -17,6 +17,17 @@ angular.module('Kiosk').service('Slideshow', function Slideshow($rootScope, $tim
             return;
         }
 
+        // If only one slide
+        if(slides.length == 1){
+            self.slide = 0;
+            angular.element("main").animate({scrollLeft:0}, 1000, "linear", nextSlide);
+            $rootScope.$apply(function(){
+                setProgressBarTransitionTime(1000);
+                $rootScope.slideshowProgress = 0;
+            });
+            return;
+        }
+
         // Next slide
         self.slide++;
         if(self.slide >= slides.length){
