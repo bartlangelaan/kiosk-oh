@@ -7,6 +7,7 @@ kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, Ca
         angular.element('#slideshowProgress'));
 
     var ran = false;
+    var lastCommitSha = false;
 
     $interval(function(){
         if(!moment().second() == 0 && ran) return;
@@ -29,10 +30,9 @@ kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, Ca
                 field4: $rootScope.canteen && $rootScope.canteen.active ? $rootScope.canteen.active.length : 0
             });
 
-        var lastCommitSha;
-
         $http.get("https://api.github.com/repos/bartlangelaan/oliveo-handbal-kiosk/commits").then(function(response){
             var commitSha = response.data[0].sha;
+            console.log("[GITHUB] Previous commit",lastCommitSha,"vs new commit",commitSha);
             if(!lastCommitSha) lastCommitSha = commitSha;
             else if(lastCommitSha != commitSha) document.location.reload();
         })
