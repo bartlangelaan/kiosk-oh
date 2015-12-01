@@ -1,6 +1,31 @@
 <md-toolbar>
     <h1 class="md-toolbar-tools kiosk-header">Social media</h1>
 </md-toolbar>
-<md-content class="md-padding" flex>
-    Twitter Facebook
+<md-content class="md-padding" flex layout="column" layout-align="center center">
+    <table class="social">
+        <tr>
+            <td>Twitter:</td>
+            <th>twitter.com/OliveoHandbal</th>
+        </tr>
+        <tr>
+            <td>Facebook:</td>
+            <th>facebook.com/OliveoHandbal</th>
+        </tr>
+        <tr>
+            <td>Website:</td>
+            <th>www.oliveohandbal.nl</th>
+        </tr>
+    </table>
 </md-content>
+
+<style>
+    .social{
+        border-spacing: 25px 0;
+        font-size:80px;
+        font-weight: 200;
+    }
+    .social th{
+        font-weight: 300;
+        text-align: left;
+    }
+</style>
