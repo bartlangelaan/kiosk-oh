@@ -39,11 +39,11 @@
             </table>
         </section>
 
-        <section class="schedule training" flex layout="column" ng-show="training.active.length">
-
+        <section class="schedule training" flex ng-show="training.home.now.length && !games.home.now.length">
+            Training: <span ng-repeat="train in training.home.now">{{train.teamShort + ($last ? "" : ",")}} </span>
         </section>
 
-        <section class="schedule none" flex layout="column" ng-hide="games.home.now.length || training.active.length">
+        <section class="schedule none" flex layout="column" ng-hide="games.home.now.length || training.home.now.length">
             Geen thuiswedstrijden vandaag.
         </section>
 

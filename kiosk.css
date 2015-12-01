@@ -45,10 +45,15 @@ footer .time{
     margin-left: -40px;
 }
 
-.schedule td{
+.schedule td,
+.schedule.training{
     text-align: left;
     font-size: 60px;
     font-weight: 300;
+}
+
+.schedule.training{
+    line-height:175px;
 }
 
 .schedule.none{
