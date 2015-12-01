@@ -56,3 +56,14 @@ footer .time{
     font-weight: 300;
     line-height:175px;
 }
+
+.games{
+    border-spacing: 25px 0;
+    font-size:50px;
+}
+.games tr.active{
+    font-weight:400;
+}
+.games tr{
+    font-weight: 300;
+}

@@ -1,0 +1,8 @@
+<md-toolbar>
+    <h1 class="md-toolbar-tools kiosk-header">Thuiswedstrijden {{games.home.saturday[0].time.isSame(time, 'week') ? "" : "volgende week "}}zaterdag</h1>
+</md-toolbar>
+<md-content class="md-padding" flex layout="column" layout-align="center center">
+    <table class="games">
+        <tr ng-repeat="game in games.home.saturday" ng-include="'slides/wedstrijden.html'"></tr>
+    </table>
+</md-content>

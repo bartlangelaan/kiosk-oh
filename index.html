@@ -18,7 +18,11 @@
 <main flex layout>
     <!--article layout="column" ng-include="'slides/lasergame-evenement.html'"></article>
     <article layout="column" ng-include="'slides/social-media.html'" data-time="2000"></article-->
-    <article layout="column" ng-include="'slides/kantinedienst.html'" data-time="5000" ng-show="canteen.active.length"></article>
+    <article layout="column" ng-include="'slides/kantinedienst.html'" ng-show="canteen.active.length"></article>
+
+    <article layout="column" ng-include="'slides/wedstrijden_vandaag.html'" ng-show="games.home.today.length"></article>
+    <article layout="column" ng-include="'slides/wedstrijden_zaterdag.html'" ng-show="games.home.saturday.length && time.day() != 6"></article>
+    <article layout="column" ng-include="'slides/wedstrijden_zondag.html'" ng-show="games.home.saturday.length && time.day() != 7"></article>
 </main>
 <footer flex="none">
     <md-progress-linear md-mode="determinate" value="{{slideshowProgress}}" id="slideshowProgress"></md-progress-linear>
@@ -38,7 +42,7 @@
         </section>
 
         <section class="schedule none" flex layout="column" ng-hide="games.home.now.length || training.active.length">
-            Geen wedstrijden vandaag.
+            Geen thuiswedstrijden vandaag.
         </section>
 
         <section class="time" flex="none">{{time.format("HH:mm")}}</section>
