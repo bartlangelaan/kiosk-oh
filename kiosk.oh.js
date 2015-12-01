@@ -140,8 +140,8 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
                 $rootScope.training.push({
                     startTime: moment(training[1], "HH:mm:ss").day(dagen.indexOf(training[0])),
                     endTime: moment(training[2], "HH:mm:ss").day(dagen.indexOf(training[0])),
-                    team: $td.eq(3).text(),
-                    teamShort: $td.eq(3).text().replace("Oliveo ", ""),
+                    team: $td.eq(3).text().replace("Olivea", "Oliveo"),
+                    teamShort: $td.eq(3).text().replace("Oliveo ", "").replace("Olivea ", ""),
                     place: $td.eq(4).text()
                 });
             });
