@@ -31,7 +31,7 @@ kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, Ca
                 api_key: "A0FTPIBJA1UURYG8",
                 field1: 1,
                 field2: $rootScope.games && $rootScope.games.active ? 1 : 0,
-                field3: 0,
+                field3: $rootScope.training && $rootScope.training.home ? $rootScope.training.home.now.length : 0,
                 field4: $rootScope.canteen && $rootScope.canteen.active ? $rootScope.canteen.active.length : 0
             });
 
