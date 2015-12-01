@@ -1,6 +1,6 @@
 var kiosk = angular.module('Kiosk', ['ngMaterial']);
 
-kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, CanteenInfo, $http, $rootScope){
+kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, CanteenInfo, TrainingInfo, $http, $rootScope){
     Slideshow(
         "article:not(.ng-hide)",
         30000,
@@ -17,10 +17,12 @@ kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, Ca
         if(moment().minute == 0 || !ran){
             GamesInfo.refresh();
             CanteenInfo.refresh();
+            TrainingInfo.refresh();
         }
 
         GamesInfo.update();
         CanteenInfo.update();
+        TrainingInfo.update();
 
         ran = true;
 

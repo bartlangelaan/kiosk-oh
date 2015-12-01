@@ -116,4 +116,63 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
         refresh: refresh,
         update: update
     }
+})
+.service('TrainingInfo', function($rootScope, $http){
+    function refresh() {
+        console.log("[TRAINING] Refreshing..");
+        $http.get("https://crossorigin.me/http://oliveohandbal.nl/programma/trainingstijden/").then(function (response) {
+            console.log("[TRAINING] Response:", response);
+
+            moment.locale('en');
+
+            $rootScope.training = [];
+
+            var dagen = ["zo", "ma", "di", "wo", "do", "vr", "za"];
+            var training = [];
+
+            $(response.data).find(".programmaoverzichtgegevens").each(function () {
+                var $td = $(this).find("td");
+
+                for(var a = 0; a < 3; a++){
+                    if($td.eq(a).text() != "") training[a] = $td.eq(a).text();
+                }
+
+                $rootScope.training.push({
+                    startTime: moment(training[1], "HH:mm:ss").day(dagen.indexOf(training[0])),
+                    endTime: moment(training[2], "HH:mm:ss").day(dagen.indexOf(training[0])),
+                    team: $td.eq(3).text(),
+                    teamShort: $td.eq(3).text().replace("Oliveo ", ""),
+                    place: $td.eq(4).text()
+                });
+            });
+
+            console.log("[TRAINING] Refreshed:", $rootScope.training);
+
+            update();
+
+            moment.locale('nl');
+        });
+    }
+
+    function update(){
+        if(!$rootScope.training) return;
+
+        $rootScope.training.home = {
+            today: $.grep($rootScope.training, function(training){
+                return training.place == "Het Nest" && training.startTime.isSame(moment(), 'day');
+            }),
+
+            now: $.grep($rootScope.training, function(training){
+                return training.place == "Het Nest" && moment().isBetween(training.startTime, training.endTime);
+            })
+        };
+
+
+        console.log("[CANTEEN] Home:", $rootScope.training.home);
+    }
+
+    return {
+        refresh: refresh,
+        update: update
+    }
 });
