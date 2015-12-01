@@ -24,6 +24,23 @@
     <md-progress-linear md-mode="determinate" value="{{slideshowProgress}}" id="slideshowProgress"></md-progress-linear>
     <div layout>
 
+        <section class="schedule games" flex layout="column" ng-show="games.home.now.length">
+            <table>
+                <tr ng-repeat="game in games.home.now">
+                    <td>{{game.time.format("HH:mm")}}</td>
+                    <td>{{game.team}} - {{game.opponent}}</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="schedule training" flex layout="column" ng-show="training.active.length">
+
+        </section>
+
+        <section class="schedule none" flex layout="column" ng-hide="games.home.now.length || training.active.length">
+            Geen wedstrijden vandaag.
+        </section>
+
         <section class="time" flex="none">{{time.format("HH:mm")}}</section>
 
     </div>

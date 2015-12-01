@@ -31,15 +31,31 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
     function update(){
         if(!$rootScope.games) return;
 
-        $rootScope.games.active = $rootScope.games[0].time.isSame(moment(), 'day') ? 0 : false;
+        $rootScope.games.home = {
 
-        for(i = 0; i < $rootScope.games.length; i++){
-            if(moment().isAfter($rootScope.games[i].time)) {
-                $rootScope.games.active = i;
+            today: $.grep($rootScope.games, function(game){
+                return game.home && game.time.isSame(moment(), 'day');
+            }),
+
+            saturday: $.grep($rootScope.games, function(game){
+                return game.home && game.time.isSame(moment().day(6), 'day');
+            }),
+
+            sunday: $.grep($rootScope.games, function(game){
+                return game.home && game.time.isSame(moment().day(7), 'day');
+            })
+
+        };
+
+        $rootScope.games.home.now = $rootScope.games.home.today.length ? [$rootScope.games.home.today[0]] : [];
+
+        for(i = 0; i < $rootScope.games.home.today; i++){
+            if(moment().isAfter($rootScope.games.home.today[i].time)) {
+                $rootScope.games.home.now = [$rootScope.games.home.today[i]];
             }
         }
 
-        console.log('[GAMES] Active: ' + $rootScope.games.active);
+        console.log('[GAMES] Home: ', $rootScope.games.home);
     }
 
     return {
