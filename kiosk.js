@@ -11,6 +11,9 @@ kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, Ca
 
     $interval(function(){
         if(!moment().second() == 0 && ran) return;
+
+        $rootScope.time = moment();
+
         if(moment().minute == 0 || !ran){
             GamesInfo.refresh();
             CanteenInfo.refresh();

@@ -25,3 +25,13 @@ main > article{
 .align-bottom{
     vertical-align: bottom;
 }
+
+footer{
+    height:180px;
+}
+
+footer .time{
+    font-size:100px;
+    line-height:175px;
+    margin-right: 40px;
+}
