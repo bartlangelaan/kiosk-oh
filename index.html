@@ -23,6 +23,8 @@
     <article layout="column" ng-include="'slides/wedstrijden_vandaag.html'" ng-show="games.home.today.length"></article>
     <article layout="column" ng-include="'slides/wedstrijden_zaterdag.html'" ng-show="games.home.saturday.length && time.day() != 6"></article>
     <article layout="column" ng-include="'slides/wedstrijden_zondag.html'" ng-show="games.home.saturday.length && time.day() != 7"></article>
+
+    <article layout="column" ng-include="'slides/training.html'" ng-show="training.home.today.length"></article>
 </main>
 <footer flex="none">
     <md-progress-linear md-mode="determinate" value="{{slideshowProgress}}" id="slideshowProgress"></md-progress-linear>

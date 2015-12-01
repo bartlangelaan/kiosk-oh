@@ -1,0 +1,29 @@
+<md-toolbar>
+    <h1 class="md-toolbar-tools kiosk-header">Trainingen vandaag</h1>
+</md-toolbar>
+<md-content flex layout="column" layout-align="center center">
+    <table class="training">
+        <tr ng-repeat="train in training.home.today"
+            class="{{training.home.now.indexOf(train) != -1 ? 'active' : ''}}">
+            <td class="align-right">
+                {{train.startTime.format("HH:mm")}} - {{train.endTime.format("HH:mm")}}
+            </td>
+            <td class="align-left">
+                {{train.team}}
+            </td>
+        </tr>
+    </table>
+</md-content>
+
+<style>
+    .training{
+        font-size: 40px;
+        border-spacing: 40px 0;
+    }
+    .training tr{
+        font-weight: 300;
+    }
+    .training tr.active{
+        font-weight:400;
+    }
+</style>
