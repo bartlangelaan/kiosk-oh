@@ -28,6 +28,14 @@ kiosk.controller('KioskController', function($interval, Slideshow, GamesInfo, Ca
                 field3: 0,
                 field4: $rootScope.canteen && $rootScope.canteen.active ? $rootScope.canteen.active.length : 0
             });
+
+        var lastCommitSha;
+
+        $http.get("https://api.github.com/repos/bartlangelaan/oliveo-handbal-kiosk/commits").then(function(response){
+            var commitSha = response.data[0].sha;
+            if(!lastCommitSha) lastCommitSha = commitSha;
+            else if(lastCommitSha != commitSha) document.location.reload();
+        })
     }, 1000);
 
 });
