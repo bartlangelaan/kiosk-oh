@@ -1,3 +1,7 @@
+html,body{
+    cursor: none;
+}
+
 main{
     overflow: hidden;
 }
