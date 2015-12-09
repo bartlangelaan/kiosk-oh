@@ -73,5 +73,17 @@
 <script src="kiosk.js"></script>
 <script src="kiosk.slides.js"></script>
 <script src="kiosk.oh.js"></script>
+
+<!-- Check if loaded successfully -->
+<script>
+    setInterval(function(){
+        try{
+            var module = angular.module("Kiosk");
+        }
+        catch(error) {
+            document.location.reload();
+        }
+    }, 30*1000);
+</script>
 </body>
 </html>
