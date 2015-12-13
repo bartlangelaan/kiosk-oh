@@ -49,7 +49,7 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
 
         $rootScope.games.home.now = $rootScope.games.home.today.length ? [$rootScope.games.home.today[0]] : [];
 
-        for(i = 0; i < $rootScope.games.home.today; i++){
+        for(i = 0; i < $rootScope.games.home.today.length; i++){
             if(moment().isAfter($rootScope.games.home.today[i].time)) {
                 $rootScope.games.home.now = [$rootScope.games.home.today[i]];
             }
