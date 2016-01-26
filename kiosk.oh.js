@@ -1,7 +1,9 @@
+var PROXY = "http://cors.io/?u=";
+
 angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
     function refresh(){
         console.log("[GAMES] Refreshing..");
-        $http.get("https://crossorigin.me/http://oliveohandbal.nl/programma/").then(function(response){
+        $http.get(PROXY+"http://oliveohandbal.nl/programma/").then(function(response){
             console.log("[GAMES] Response:", response);
 
             moment.locale('en');
@@ -66,7 +68,7 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
 .service('CanteenInfo', function($rootScope, $http){
     function refresh() {
             console.log("[CANTEEN] Refreshing..");
-            $http.get("https://crossorigin.me/http://oliveohandbal.nl/programma/kantinedienst/").then(function (response) {
+            $http.get(PROXY+"http://oliveohandbal.nl/programma/kantinedienst/").then(function (response) {
                 console.log("[CANTEEN] Response:", response);
 
                 moment.locale('en');
@@ -120,7 +122,7 @@ angular.module('Kiosk').service('GamesInfo', function($rootScope, $http){
 .service('TrainingInfo', function($rootScope, $http){
     function refresh() {
         console.log("[TRAINING] Refreshing..");
-        $http.get("https://crossorigin.me/http://oliveohandbal.nl/programma/trainingstijden/").then(function (response) {
+        $http.get(PROXY+"http://oliveohandbal.nl/programma/trainingstijden/").then(function (response) {
             console.log("[TRAINING] Response:", response);
 
             moment.locale('en');
