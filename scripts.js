@@ -29,7 +29,7 @@ setInterval(function(){
         }
     try{
             var module = angular.module("Kiosk");
-        }
+        
     }
     catch(error) {
         document.location.reload();
