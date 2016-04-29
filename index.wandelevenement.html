@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Kiosk">
+<head>
+    <meta charset="UTF-8">
+    <title>Oliveo Handbal Kiosk</title>
+
+    <!-- Roboto font -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800" type="text/css">
+
+    <!-- Angular -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc5/angular-material.min.css">
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="kiosk.css">
+
+    <style>
+        md-content > h1{
+            font-size:60px;
+            text-align:center;
+        }
+
+        md-content > p{
+            font-size:40px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body layout="column" ng-controller="KioskController">
+
+<main flex layout>
+    <article layout="column" >
+        <md-toolbar layout="column" layout-align="center center">
+           <h1 class="md-toolbar-tools kiosk-header">Welkom</h1>
+        </md-toolbar>
+        <md-content class="md-padding" flex layout="column" layout-align="center center">
+            <h1>Welkom deelnemers aan de 43e Nacht van Pijnacker!</h1>
+        </md-content>
+    </article>
+    <article layout="column" >
+        <md-content class="md-padding" flex layout="column" layout-align="center center">
+            <h1>Wandelevenementen Pijnacker dankt Oliveo Handbal voor de gastvrijheid!</h1>
+        </md-content>
+    </article>
+    <article layout="column" >
+        <md-content class="md-padding" flex layout="column" layout-align="center center">
+            <h1>Vanaf 0.00 uur kunt u gaan wandelen.</h1>
+            <h1>Het startbureau is om 5 uur weer open.</h1>
+        </md-content>
+    </article>
+    <article layout="column" >
+        <md-toolbar layout="column" layout-align="center center">
+            <h1 class="md-toolbar-tools kiosk-header">Ontbijt</h1>
+        </md-toolbar>
+        <md-content class="md-padding" flex layout="column" layout-align="center center">
+            <p>Zin in een ontbijt na afloop? Slechts 4 euro voor een croissant, een broodje, een eitje, ham of kaas, een glaasje jus d’orange en koffie of thee. Bestel voor de start!</p>
+        </md-content>
+    </article>
+    <article layout="column" >
+        <md-toolbar layout="column" layout-align="center center">
+            <h1 class="md-toolbar-tools kiosk-header">Welkom</h1>
+        </md-toolbar>
+        <md-content class="md-padding" flex layout="column" layout-align="center center">
+            <p>De route is 28,6 km lang. Er is één verzorgde rust (halverwege) en twee wagenposten (op ca. 7,5 en op ca. 21 km).</p>
+        </md-content>
+    </article>
+    <article layout="column" >
+        <md-toolbar layout="column" layout-align="center center">
+            <h1 class="md-toolbar-tools kiosk-header">Welkom</h1>
+        </md-toolbar>
+        <md-content class="md-padding" flex layout="column" layout-align="center center">
+            <p>Doe ook mee aan de Vierwindstrekentocht (25 juni). Afstanden 15, 25 en 40 km. Start: Oliveo Handbal.</p>
+        </md-content>
+    </article>
+</main>
+<footer flex="none">
+    <md-progress-linear md-mode="determinate" value="{{slideshowProgress}}" id="slideshowProgress"></md-progress-linear>
+    <div layout>
+
+        <section class="schedule none" flex layout="column">
+            Welkom in de Oliveo Handbal kantine!
+        </section>
+
+        <section class="time" flex="none">{{time.format("HH:mm")}}</section>
+
+    </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
