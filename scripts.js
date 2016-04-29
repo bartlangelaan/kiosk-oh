@@ -19,9 +19,12 @@ setInterval(function(){
         var currPath = document.location.pathname.split('/');
         currPath = currPath[currPath.length-1];
 
-        console.log("current path"+ currPath);
-
-        if(moment().isBetween("2016-04-29 20:00", "2016-04-30 09:00") && currPath != "index.wandelevenement.html"){
+        console.log("current path "+ currPath);
+        console.log("moment", moment().isBetween("2016-04-29 20:00", "2016-04-30 09:00"));
+        
+        cuurtrue = currPath != "index.wandelevenement.html";
+        
+        if(moment && cuurtrue){
             document.location = "index.wandelevenement.html";
         }
         else if(currPath != "index.html"){
