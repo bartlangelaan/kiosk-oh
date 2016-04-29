@@ -19,7 +19,7 @@ setInterval(function(){
         var currPath = document.location.pathname.split('/');
         currPath = currPath[currPath.length-1];
 
-        console.log(currPath);
+        console.log("current path"+ currPath);
 
         if(moment().isBetween("2016-04-29 20:00", "2016-04-30 09:00") && currPath != "index.wandelevenement.html"){
             document.location = "index.wandelevenement.html";
@@ -28,8 +28,7 @@ setInterval(function(){
             document.location = "index.html";
         }
     try{
-            var module = angular.module("Kiosk");
-        
+        var module = angular.module("Kiosk");
     }
     catch(error) {
         document.location.reload();
