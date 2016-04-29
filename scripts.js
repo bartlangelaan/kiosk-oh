@@ -15,7 +15,7 @@ writeScript("kiosk.oh.js");
 
 setInterval(function(){
     
-    try{
+    
         var currPath = document.location.pathname.split('/');
         currPath = currPath[currPath.length-1];
 
@@ -27,7 +27,7 @@ setInterval(function(){
         else if(currPath != "index.html"){
             document.location = "index.html";
         }
-        else{
+    try{
             var module = angular.module("Kiosk");
         }
     }
