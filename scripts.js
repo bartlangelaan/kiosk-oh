@@ -24,6 +24,8 @@ setInterval(function(){
         
         cuurtrue = currPath != "index.wandelevenement.html";
         
+        console.log("cuurtrue, ", cuurtrue);
+        
         if(moment && cuurtrue){
             document.location = "index.wandelevenement.html";
         }
