@@ -30,7 +30,7 @@ setInterval(function(){
             document.location = "index.wandelevenement.html";
         }
         else if(currPath != "index.html"){
-            document.location = "index.html";
+            //document.location = "index.html";
         }
     try{
         var module = angular.module("Kiosk");
