@@ -20,7 +20,7 @@ setInterval(function(){
         currPath = currPath[currPath.length-1];
 
         console.log("current path "+ currPath);
-        console.log("moment", moment().isBetween("2016-04-29 20:00", "2016-04-30 09:00"));
+        console.log("moment", moment().isBetween("2016-09-10 00:32", "2016-09-10 17:00"));
         
         cuurtrue = currPath != "index.wandelevenement.html";
         
